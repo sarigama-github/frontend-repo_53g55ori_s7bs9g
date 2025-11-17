@@ -1,17 +1,28 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import Spline from '@splinetool/react-spline'
+import { Stethoscope, ShieldCheck, ClipboardList } from 'lucide-react'
 
 export default function Hero() {
   return (
     <section className="relative h-[92vh] w-full overflow-hidden">
+      {/* Elegant medical background without heart motif */}
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/2fSS9b44gtYBt4RI/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        {/* Soft base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f9f3f1] via-[#fffaf7] to-[#f7ece6]" />
+        {/* Ambient blush/champagne glows */}
+        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-rose-200/40 blur-3xl" />
+        <div className="absolute -bottom-28 -right-20 h-[28rem] w-[28rem] rounded-full bg-amber-200/40 blur-3xl" />
+        {/* Subtle pattern grid */}
+        <div className="absolute inset-0 opacity-[0.06]" style={{
+          backgroundImage:
+            'radial-gradient(circle at 1px 1px, #9f7f7f 1px, transparent 0)',
+          backgroundSize: '28px 28px'
+        }} />
+        {/* Soft vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/40" />
       </div>
 
-      {/* Soft elegant gradient overlay to harmonize palette */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#f9f3f1]/90 via-[#fffaf7]/70 to-[#f7e9e9]/60" />
-
+      {/* Content */}
       <div className="relative z-10 h-full flex items-center">
         <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <motion.div
@@ -46,6 +57,37 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Floating medical badges for professional vibe */}
+      <div className="pointer-events-none absolute inset-0">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="absolute left-6 top-16 hidden md:flex items-center gap-3 rounded-2xl border border-rose-100 bg-white/70 backdrop-blur px-4 py-2.5 text-sm text-neutral-700 shadow-sm"
+        >
+          <span className="p-2 rounded-xl bg-rose-50 text-rose-600"><Stethoscope size={18} /></span>
+          Gynekológia & pôrodníctvo
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.8 }}
+          className="absolute right-10 top-28 hidden md:flex items-center gap-3 rounded-2xl border border-amber-100 bg-white/70 backdrop-blur px-4 py-2.5 text-sm text-neutral-700 shadow-sm"
+        >
+          <span className="p-2 rounded-xl bg-amber-50 text-amber-600"><ShieldCheck size={18} /></span>
+          Citlivý prístup a súkromie
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="absolute right-1/4 bottom-16 hidden md:flex items-center gap-3 rounded-2xl border border-rose-100 bg-white/70 backdrop-blur px-4 py-2.5 text-sm text-neutral-700 shadow-sm"
+        >
+          <span className="p-2 rounded-xl bg-rose-50 text-rose-600"><ClipboardList size={18} /></span>
+          Preventívne prehliadky & poradňa
+        </motion.div>
       </div>
     </section>
   )
